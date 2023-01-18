@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!-- jQuery Library-->
+    <script src="js/passwordscheck.js"></script>
+    <!-- Include Your jQUery file here-->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Raleway", sans-serif;
+        font-size: 20px;
+        line-height: 1.5;
+      }
+      #container {
+        width: 535px;
+        background: #94b5b589;
+        padding: 25px;
+        margin: 90px auto;
+        border-radius: 5px;
+        height: 200px;
+        border: 2px solid gray;
+      }
+      #header {
+        text-align: center;
+        background-color:black;
+        color: white;
+        border-radius: 5px;
+        margin: -39px -20px 10px -20px;
+      }
+      h2 {
+        padding-top: 10px;
+      }
+      #content {
+        margin-left: 57px;
+        margin-top: 40px;
+      }
+      #register label {
+        margin-right: 5px;
+      }
+      #register input {
+        padding: 5px 14px;
+        border: 1px solid #d5d9da;
+        /* box-shadow: 0 0 9px #0e34f5 inset; */
+        width: 272px;
+        font-size: 1em;
+        height: 25px;
+      }
+      #register .Weak {
+        font-weight: bold;
+        color: red;
+        font-size: larger;
+      }
+      
+      #register .Medium {
+        font-weight: bold;
+        color: rgb(70, 104, 197);
+        font-size: larger;
+      }
+      #register .Strong {
+        font-weight: bold;
+        color: limegreen;
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        $("#password").keyup(function () {
+          $("#result").html(checkStrength($("#password").val()));
+        });
+        function checkStrength(password) {
+          var strength = 0;
+          if (password.length < 6) {
+            $("#result").removeClass();
+            $("#result").addClass("Weak");
+            return "Weak";
+          }
+          if (password.length > 7) strength += 1;
+          // If password contains both lower and uppercase characters, increase strength value.
+          if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1;
+          // If it has numbers and characters, increase strength value.
+          if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/))
+            strength += 1;
+          // If it has one special character, increase strength value.
+          if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+          // If it has two special characters, increase strength value.
+          if (
+            password.match(
+              /(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/
+            )
+          )
+            strength += 1;
+          // Calculated strength value, we can return messages
+          // If value is less than 2
+          if (strength < 2) {
+            $("#result").removeClass();
+            $("#result").addClass("Weak");
+            return "Weak";
+          } else if (strength == 2) {
+            $("#result").removeClass();
+            $("#result").addClass("Medium");
+            return "Medium";
+          } else {
+            $("#result").removeClass();
+            $("#result").addClass("Strong");
+            return "Strong";
+          }
+        }
+      });
+    </script>
+    <div id="container">
+      <div id="header">
+        <h2>Password Checker</h2>
+        <hr />
+      </div>
+      <div id="content">
+        <form id="register">
+          <label for="password"><b>Password : </b></label>
+          <input
+            name="password"
+            id="password"
+            type="password"
+            placeholder="Enter Your Password"
+          />
+          <span id="result"></span>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

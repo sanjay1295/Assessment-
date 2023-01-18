@@ -1,0 +1,93 @@
+*{
+    overflow-x: hidden;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+.a-color
+{
+    color: white !important;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.navbar-brand
+{
+    font-size: 35px;
+    color: white !important;
+    text-shadow: 1px 1px 1px black;
+    text-decoration: none;
+
+}
+.h1_style{
+    padding-top: 100px; 
+    font-family: 'Times New Roman', Times, serif;
+}
+.search_input{
+    border: none; 
+    border: none;
+    padding: 4px 150px 8px 20px;
+    border-radius: 5px;
+}
+
+.line-h2{
+    line-height: auto !important;
+}
+
+.about_content{
+    text-align: justify;
+}
+.about_images{
+    text-align: center;
+
+}
+.services_wrapper
+{
+    background: rgb(238, 235, 235);
+    padding-top: 80px;
+    padding-bottom: 70px;
+}
+
+.f-style
+{
+    font-size: 30px;
+}
+
+
+.abcd
+{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.portfolio_wrapper{
+    background: rgb(238, 235, 235);
+}
+
+.contact_wrapper{
+    background: rgb(238, 235, 235);
+    padding-top: 60px;
+}
+
+
+
+
+
+@media only screen and (max-width: 550px) {
+    .h1_style
+    {
+        padding-top: 60px; 
+    }
+    .search_input{
+        padding: 4px 30px 8px 10px;
+    }
+
+    .about_wrapper{
+        padding-top: 10px !important;
+    }
+    .about_heading{
+        font-size: 30px !important;
+    }
+    
+}
